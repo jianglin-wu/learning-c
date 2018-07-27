@@ -1,4 +1,6 @@
 # production
 dist/
-*.out
+*.i
 *.s
+*.o
+*.out
