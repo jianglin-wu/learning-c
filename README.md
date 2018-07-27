@@ -7,16 +7,28 @@
 
 ## 编译
 
-### 单个源文件编译
-在 Linux 下自带了工具 `gcc`，使用它可以将你的 C 代码编译为可以直接运行的二进制文件。
+### 编译流程
+![](http://ww1.sinaimg.cn/large/e02f2343gy1fto7la7ipaj20ly03nt8y.jpg)
+[图片来源](http://lxwei.github.io/posts/262.html)
 
-执行这条命令将 `hello.c` 文件编译成二进制，并输出为 `hello.out` 文件。
 ```bash
+# 普通编译(预处理>编译>汇编>链接)
 $ gcc -o hello.out hello.c
+
+# 详细步骤：
+# 预处理过程（替换源文件引入的标准库与头文件等操作）
+$ gcc -E -o hello.i hello.c
+# 编译过程（将预处理后的 c 源码翻译为汇编语言）
+$ gcc -S -o hello.s hello.i
+# 汇编过程（将汇编指令编译为机器指令，编译后为二进制文件，但还不能运行）
+$ gcc -c -o hello.o hello.s
+# 链接（将依赖文件与头文件整合到一起，输出的文件是可执行程序）
+$ gcc -o hello.out hello.o
 ```
 
 ## 编译知识 Todo
 * [x] 编译单个源文件
+* [x] 编译详细原理
 * [ ] 编译多个源文件
 * [ ] 使用外部函数库
 * [ ] 使用共享函数库和静态函数库
