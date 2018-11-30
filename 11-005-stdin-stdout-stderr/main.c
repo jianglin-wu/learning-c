@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+// 输入输出以及错误流
+// linux 一切皆文件，主要通过 stdin、stdout、stderr 来控制进程
+// fprintf、fscanf 是 printf、scanf 的底层封装，可以设置写入流
+
 int main()
 {
     fprintf(stdout, "请输入一个大于等于 0 的数值：\n");
