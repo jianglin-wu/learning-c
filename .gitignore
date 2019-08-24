@@ -4,3 +4,4 @@ dist/
 *.s
 *.o
 *.out
+.vscode/
