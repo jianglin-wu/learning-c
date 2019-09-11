@@ -40,3 +40,7 @@ $ gcc -o hello.out hello.o
 * [ ] 交叉编译
 
 
+## TODO
+
+- [ ] problem1051 结构体之成绩统计2
+
