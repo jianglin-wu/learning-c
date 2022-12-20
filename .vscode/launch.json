@@ -5,13 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(lldb) 启动",
+      "name": "(lldb) 启动 workspace",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+      "program": "输入程序名称，例如 ${workspaceFolder}/workspace/a.out",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/workspace",
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb"
