@@ -25,14 +25,20 @@ int main(void)
 {
 	int i;
 	int n;
+	int len = 5;
     int res;
-    DATA *plist[5];
+    DATA **plist = malloc(sizeof(DATA) * len);
 
     printf("请输入启动线程数：");
     scanf("%d", &n);
 
 
     for (i = 0; i < n; i++) {
+        if (i >= len) {
+            plist = (DATA **)realloc(plist, 5);
+            len += 5;
+            printf("len=%d\n", len);
+        }
         plist[i] = (DATA *)malloc(sizeof(DATA));
         plist[i]->value = i;
         res = pthread_create(&plist[i]->fd, NULL, ThreadFun, &plist[i]->value);
