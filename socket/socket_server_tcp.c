@@ -6,9 +6,13 @@
 #include <netinet/in.h>
 #include <netinet/ip.h>
 #include <unistd.h>
+#include <errno.h>
 
 #define PORT 1025		//端口号
 #define BACKLOG 5	//最大监听数
+
+//发送内容，参数分别是连接句柄，内容，大小，其他信息（设为0即可） 
+char *str = "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 5\r\nContent-Type: text/html\r\n\r\nok!\r\n";
 
 int main()
 {
@@ -23,8 +27,8 @@ int main()
 	iSocketFD = socket(AF_INET, SOCK_STREAM, 0); //建立socket
 	if(0 > iSocketFD)
 	{
-		printf("创建socket失败！\n");
-		return 0;
+		fprintf(stderr, "[创建 Socket 失败] [errno=%d]: %s\n", errno, strerror(errno));
+		return 1;
 	}
  
 	stLocalAddr.sin_family = AF_INET;  /*该属性表示接收本机或其他机器传输*/
@@ -34,41 +38,38 @@ int main()
 	//绑定地址结构体和socket
 	if(0 > bind(iSocketFD, (void *)&stLocalAddr, sizeof(stLocalAddr)))
 	{
-		printf("绑定失败！\n");
-		return 0;
+		fprintf(stderr, "[绑定失败] [errno=%d]: %s\n", errno, strerror(errno));
+		return 1;
 	}
  
 	//开启监听 ，第二个参数是最大监听数
 	if(0 > listen(iSocketFD, BACKLOG))
 	{
-		printf("监听失败！\n");
-		return 0;
+		fprintf(stderr, "[监听失败] [errno=%d]: %s\n", errno, strerror(errno));
+		return 1;
 	}
  
-	printf("iSocketFD: %d\n", iSocketFD);	
-	//在这里阻塞知道接收到消息，参数分别是socket句柄，接收到的地址信息以及大小 
-	new_fd = accept(iSocketFD, (void *)&stRemoteAddr, &socklen);
-	if(0 > new_fd)
-	{
-		printf("接收失败！\n");
-		return 0;
-	}else{
-		printf("接收成功！\n");
-		//发送内容，参数分别是连接句柄，内容，大小，其他信息（设为0即可） 
-		send(new_fd, "这是服务器接收成功后发回的信息!", sizeof("这是服务器接收成功后发回的信息!"), 0);
+	printf("iSocketFD: %d\n", iSocketFD);
+	while(1) {
+		//在这里阻塞知道接收到消息，参数分别是socket句柄，接收到的地址信息以及大小 
+		new_fd = accept(iSocketFD, (void *)&stRemoteAddr, &socklen);
+		if(0 > new_fd) {
+			printf("接收失败！\n");
+			continue;
+		} else{
+			printf("接收成功！\n");
+		}
+	
+		printf("new_fd: %d\n", new_fd);	
+		iRecvLen = recv(new_fd, buf, sizeof(buf), 0);	
+		if(0 >= iRecvLen)    //对端关闭连接 返回0
+		{	
+			printf("接收失败或者对端关闭连接！\n");
+		}else{
+			printf("buf: %s\n", buf);
+			send(new_fd, str, strlen(str), 0);
+		}
+		close(new_fd);
 	}
- 
-	printf("new_fd: %d\n", new_fd);	
-	iRecvLen = recv(new_fd, buf, sizeof(buf), 0);	
-	if(0 >= iRecvLen)    //对端关闭连接 返回0
-	{	
-		printf("接收失败或者对端关闭连接！\n");
-	}else{
-		printf("buf: %s\n", buf);
-	}
- 
-	close(new_fd);
-	close(iSocketFD);
- 
 	return 0;
 }
