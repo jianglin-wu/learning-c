@@ -8,10 +8,10 @@
       "name": "(lldb) 启动 workspace",
       "type": "cppdbg",
       "request": "launch",
-      "program": "输入程序名称，例如 ${workspaceFolder}/workspace/a.out",
+      "program": "${fileDirname}/main.out",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}/workspace",
+      "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb"

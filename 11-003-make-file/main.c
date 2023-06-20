@@ -11,7 +11,8 @@
 //
 // 具体配置请看 Makefile
 
-int main(void){
+int main(void)
+{
     int a1 = 22;
     int a2 = 33;
     int maxNum = max(a1, a2);
@@ -20,4 +21,3 @@ int main(void){
     printf("minNum: %d\n", minNum);
     return 0;
 }
-

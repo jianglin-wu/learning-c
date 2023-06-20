@@ -27,11 +27,12 @@ int main()
     printf("请输入一个数值 j：\n");
     scanf("%d", &j);
 
-    if (j != 0) {
+    if (j != 0)
+    {
         printf("%d / %d = %d\n", i, j, i / j);
         return 0;
     }
-    
+
     fprintf(stderr, "j 不能为 0！\n");
     return 1;
 }

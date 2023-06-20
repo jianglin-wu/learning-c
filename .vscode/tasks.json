@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Complie C",
+      "label": "gcc complie simple C",
       "type": "shell",
       "command": "gcc",
       "args": [
@@ -16,7 +16,7 @@
       ],
       "group": {
         "kind": "build",
-        "isDefault": true
+        "isDefault": false
       },
       "presentation": {
         "echo": true,
@@ -27,6 +27,39 @@
         "clear": false
       },
       "problemMatcher": "$gcc"
+    },
+    {
+      "type": "cppbuild",
+      "label": "C/C++: clang",
+      "command": "/usr/bin/clang",
+      "args": [
+        "-fcolor-diagnostics",
+        "-fansi-escape-codes",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.out"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": "build",
+      "detail": "编译器: /usr/bin/clang"
+    },
+    {
+      "label": "makefile build",
+      "type": "shell",
+      "command": "",
+      "args": ["make", "--directory=${fileDirname}"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
     }
   ]
 }
