@@ -1,4 +1,4 @@
-# 再学 C 语言
+# 再学 C/C++ 语言
 
 ## 前言
 
@@ -27,6 +27,70 @@ $ gcc -c -o hello.o hello.s
 # 链接（将依赖文件与头文件整合到一起，输出的文件是可执行程序）
 $ gcc -o hello.out hello.o
 ```
+
+### Makefile 编写
+
+参考：[利用makefile文件编译c++源文件](https://blog.csdn.net/zhaocuit/article/details/74782789)
+
+编译 cpp（如果是 c 源文件只需将配置中 cpp 修改成 c，g++ 修改成 gcc）:
+
+```
+CC=g++
+SRCS=main.cpp\
+        udp.cpp
+OBJS=$(SRCS:.cpp=.o)
+EXEC=maincpp
+start:$(OBJS)
+        $(CC) -o $(EXEC) $(OBJS)
+.cpp.o:
+        #-DMYLINUX:-D为参数，MYLINUX为在cpp源文件中定义的宏名称，如#ifdef MYLINUX。注意-D和宏名称中间没有空格
+        $(CC) -o $@ -c $< -DMYLINUX
+        $(CC) -o $@ -c $< -DMYLINUX
+clean:
+        rm -rf $(OBJS)
+```
+
+
+编译 so 库：
+
+```
+CC=gcc
+SRCS=mylib.c
+OBJS=$(SRCS:.c=.o)
+#这里的命名有一个规则，以lib开头，以.so结尾，必须这样
+EXEC=libmylib.so
+start:$(OBJS)
+        #-shared表示最终链接成so共享文件
+        $(CC) -o $(EXEC) $(OBJS) -shared
+.c.o:
+        #-fPIC表在编译时生成和位置无关的代码
+        $(CC) -o $@ -c $< -fPIC
+clean:
+        rm -rf $(OBJS)
+```
+
+编译使用库的程序：
+
+```
+CC=g++
+SRCS=main.cpp
+OBJS=$(SRCS:.cpp=.o)
+EXEC=maincpp
+start:$(OBJS)
+        #-L../表示需要链接库的地址，可以是相对路径或者绝对路径，-lmylib为需要使用的库，注意这里的mylib是指libmylib.so文件，去掉前面的lib和.so后缀名后的名字
+        $(CC) -o $(EXEC) $(OBJS) -L../ -lmylib
+.cpp.o:
+        $(CC) -o $@ -c $<
+clean:
+        rm -rf $(OBJS)
+```
+
+> 上述 makefile 的 $(CC) -o $(EXEC) $(OBJS) -L../ -lmylib 部分时，只是指明了链接时的库文件路径，而没有指明运行时库文件路径。
+> 在使用库文件（so文件）时，需要指明链接时的so文件路径和运行时的so文件路径。-L表示的是链接时库文件的路径。
+> 而运行时的库文件路径由“-Wl,-R”参数或者"-Wl,-rpath"指定（如果使用"-Wl,-rpath"这个参数，参数和路径中间必须有空格。
+> 也可以用"-Wl,-rpath="，这种方式的参数和路径中间就不需要空格）。
+> 即只需要将$(CC) -o $(EXEC) $(OBJS) -L../ -lmylib修改成$(CC) -o $(EXEC) $(OBJS) -L../ -lmylib -Wl,-R../即可。
+
 
 ## VsCode 下开发
 
