@@ -28,6 +28,11 @@ $ gcc -c -o hello.o hello.s
 $ gcc -o hello.out hello.o
 ```
 
+其他
+
+[5分钟理解make/makefile/cmake/nmake](https://zhuanlan.zhihu.com/p/111110992)
+
+
 ### Makefile 编写
 
 参考：[利用makefile文件编译c++源文件](https://blog.csdn.net/zhaocuit/article/details/74782789)
