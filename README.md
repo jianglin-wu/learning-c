@@ -32,6 +32,12 @@ $ gcc -o hello.out hello.o
 
 [5分钟理解make/makefile/cmake/nmake](https://zhuanlan.zhihu.com/p/111110992)
 
+- gcc: GNU Compiler Collection（就是GNU编译器套件）
+- make: 可以看成是一个智能的批处理工具
+- makefile: 批处理工具的配置
+- cmake
+- CMakeList.txt
+
 
 ### Makefile 编写
 
