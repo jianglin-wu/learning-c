@@ -37,6 +37,10 @@ $ gcc -o hello.out hello.o
 - makefile: 批处理工具的配置
 - cmake
 - CMakeList.txt
+- AutoTools(Autoconf、Automake、Libtool)
+  - [GNU Autotools 入门教程](http://www.linuxcoming.com/blog/2019/08/01/gnu_autotools_tutorials.html)
+- GYP
+- GN
 
 
 ### Makefile 编写
