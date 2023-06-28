@@ -107,6 +107,18 @@ clean:
 > 即只需要将$(CC) -o $(EXEC) $(OBJS) -L../ -lmylib修改成$(CC) -o $(EXEC) $(OBJS) -L../ -lmylib -Wl,-R../即可。
 
 
+其他问题
+- [怎么卸载用 make install 编译安装的软件？](https://www.zhihu.com/question/20092756)
+
+
+
+
+### Cmake
+
+- [从零开始详细介绍CMake](https://www.bilibili.com/video/BV1vR4y1u77h?p=1&vd_source=fa7ef5b52c257696949bed772d9dbced)
+- CMake 指定安装目录（通过 CMAKE_INSTALL_PREFIX 参数）
+  - [方法1: `CMake 指定安装目录`](https://blog.csdn.net/CaspianSea/article/details/53526725)
+
 ## VsCode 下开发
 
 ### 快捷构建任务
@@ -136,8 +148,7 @@ ps: 需要注意的是构建任务的 gcc 命令需要加上 `-g` 参数才能�
 * [x] 编译单个源文件
 * [x] 编译详细原理
 * [x] 编译多个源文件
-* [ ] 使用外部函数库
-* [ ] 使用共享函数库和静态函数库
-* [ ] gcc 选项详细描述
-* [ ] C 程序调式
+* [x] 使用外部函数库
+* [x] 使用共享函数库和静态函数库
+* [x] C 程序调式
 * [ ] 交叉编译
