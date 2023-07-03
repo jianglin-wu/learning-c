@@ -54,6 +54,19 @@
       "args": ["make", "--directory=${fileDirname}"],
       "group": {
         "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "cmake build",
+      "type": "shell",
+      "command": "mkdir -p ${fileDirname}/build && cd ${fileDirname}/build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make",
+      "group": {
+        "kind": "build",
         "isDefault": true
       },
       "presentation": {
