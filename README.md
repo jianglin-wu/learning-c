@@ -39,8 +39,10 @@ $ gcc -o hello.out hello.o
 - CMakeList.txt
 - AutoTools(Autoconf、Automake、Libtool)
   - [GNU Autotools 入门教程](http://www.linuxcoming.com/blog/2019/08/01/gnu_autotools_tutorials.html)
+  - [Autotools 入门教程](https://php-note.com/1441.html)
 - GYP
-- GN
+- gn / ninja
+
 
 
 ### Makefile 编写
@@ -151,4 +153,3 @@ ps: 需要注意的是构建任务的 gcc 命令需要加上 `-g` 参数才能�
 * [x] 使用外部函数库
 * [x] 使用共享函数库和静态函数库
 * [x] C 程序调式
-* [ ] 交叉编译
