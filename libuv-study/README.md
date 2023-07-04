@@ -23,8 +23,9 @@ $ cmake --build build                       # add `-j <n>` with cmake >= 3.12
 ## Build the Libuv Example.
 
 ```
-$ cd getting-start-uv
+$ cd 01-getting-start-uv
 $ mkdir -p build
 $ (cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make)
-$ ./build/main # 如果要调试，使用 vscode “(lldb) cmake” 调试模式，在当前目录点击运行
+$ ./build/main
+# If you want to debug, use "(lldb) cmake" debug mood in current directory.
 ```

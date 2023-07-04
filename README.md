@@ -111,6 +111,7 @@ clean:
 
 其他问题
 - [怎么卸载用 make install 编译安装的软件？](https://www.zhihu.com/question/20092756)
+- [如何解决vscode检测到#include错误，请更新includePath。](https://blog.csdn.net/weixin_44621617/article/details/107818700)
 
 
 
@@ -118,6 +119,7 @@ clean:
 ### Cmake
 
 - [从零开始详细介绍CMake](https://www.bilibili.com/video/BV1vR4y1u77h?p=1&vd_source=fa7ef5b52c257696949bed772d9dbced)
+- [CMake编译配置工具](https://www.cnblogs.com/zhjblogs/p/16180775.html)
 - CMake 指定安装目录（通过 CMAKE_INSTALL_PREFIX 参数）
   - [方法1: `CMake 指定安装目录`](https://blog.csdn.net/CaspianSea/article/details/53526725)
 
