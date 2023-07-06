@@ -27,6 +27,18 @@
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb"
+    },
+    {
+      "name": "(lldb) cmake open fs",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}/build/main",
+      "args": ["./a.txt", "./b.txt"],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb"
     }
   ]
 }
