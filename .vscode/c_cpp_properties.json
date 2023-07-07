@@ -4,11 +4,13 @@
       "name": "Mac",
       "includePath": [
         "${workspaceFolder}/**",
+        // 解决 vscode 代码提示找不到库问题
         "~/code/github.com/libuv/libuv/include"
       ],
       "defines": [],
       "macFrameworkPath": [
-        "/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks"
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks"
       ],
       "compilerPath": "/usr/bin/clang",
       "cStandard": "c11",

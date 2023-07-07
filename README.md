@@ -1,27 +1,27 @@
-# 再学 C/C++ 语言
+# Learning c/c++
 
-## 目录
+## Table of contents
 
-- [再学 C/C++ 语言](#再学-cc-语言)
-  - [目录](#目录)
-  - [前言](#前言)
-  - [编译](#编译)
-    - [编译流程](#编译流程)
-    - [Makefile 编写](#makefile-编写)
-    - [Cmake](#cmake)
-  - [VsCode 下开发](#vscode-下开发)
-    - [快捷构建任务](#快捷构建任务)
-    - [调试](#调试)
-  - [Todo](#todo)
+- [Learning c/c++](#learning-cc)
+  - [Table of contents](#table-of-contents)
+  - [Introduce](#introduce)
+  - [Building](#building)
+    - [Gcc Building Step](#gcc-building-step)
+    - [Makefile](#makefile)
+    - [CMake](#cmake)
+  - [VsCode Development](#vscode-development)
+    - [Shortcut key Building](#shortcut-key-building)
+    - [Debugger](#debugger)
 
-## 前言
+## Introduce
 
-抛开 bat 脚本和易语言不谈，C 语言应该是我学的第一门比较正式的程序语言。学的并不理想，很多知识没有学到。经常心里惦记着把它再学一遍，无奈一拖再拖过去了好几年，所以今天定下决心治治自己的拖延症。
+本仓库用于存放一些 c/c++ 方面的学习笔记和代码示例，主要有 c/c++ 基本语法、编译调试、libuv 基本使用。更新计划增加 v8、skia、node.js n-api 相关实例。
 
 
-## 编译
-### 编译流程
-![](http://ww1.sinaimg.cn/large/e02f2343gy1fto7la7ipaj20ly03nt8y.jpg)
+## Building
+### Gcc Building Step
+
+![Alt text](./docs/assets/image.png)
 [图片来源](http://lxwei.github.io/posts/262.html)
 
 ```bash
@@ -71,7 +71,7 @@ GCC文件后缀名：
 
 
 
-### Makefile 编写
+### Makefile
 
 参考：[利用makefile文件编译c++源文件](https://blog.csdn.net/zhaocuit/article/details/74782789)
 
@@ -142,16 +142,16 @@ clean:
 
 
 
-### Cmake
+### CMake
 
 - [从零开始详细介绍CMake](https://www.bilibili.com/video/BV1vR4y1u77h?p=1&vd_source=fa7ef5b52c257696949bed772d9dbced)
 - [CMake编译配置工具](https://www.cnblogs.com/zhjblogs/p/16180775.html)
 - CMake 指定安装目录（通过 CMAKE_INSTALL_PREFIX 参数）
   - [方法1: `CMake 指定安装目录`](https://blog.csdn.net/CaspianSea/article/details/53526725)
 
-## VsCode 下开发
+## VsCode Development
 
-### 快捷构建任务
+### Shortcut key Building
 
 通过 `.vscode/tasks.json` 配置快捷任务，使用 `command + shift + b` 执行默认任务。或者 `command + shift + p` 调出命令输入框，输入 `tasks` 找到任务相关操作。
 
@@ -166,18 +166,10 @@ clean:
 - 【makefile build】构建 makefile 程序，在 makefile 文件目录执行（默认）。
 
 
-### 调试
+### Debugger
 
 通过 `.vscode/launch.json` 配置调试配置，在左侧【运行和调试】模块点击 “(lldb) 启动 workspace” 或直接按 `F5` 进入调试模式。
 
 ps: 需要注意的是构建任务的 gcc 命令需要加上 `-g` 参数才能调试，参考 [gdb 调试](./12-005-gdb/note.md)。
 
 
-## Todo
-
-* [x] 编译单个源文件
-* [x] 编译详细原理
-* [x] 编译多个源文件
-* [x] 使用外部函数库
-* [x] 使用共享函数库和静态函数库
-* [x] C 程序调式
